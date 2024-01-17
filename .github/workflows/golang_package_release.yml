@@ -36,7 +36,6 @@ jobs:
 
       # - name: build package with command
         # run: go build -v ./...
-
       # - name: Debug list files
         # run: ls -laR
 
@@ -52,7 +51,8 @@ jobs:
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
-          files: ./golang_dummy
+          # files: ./golang_dummy
+          files: ./README.md
           token: ${{ secrets.GITHUB_TOKEN }}
           body: |
             Release created automatically
