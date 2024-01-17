@@ -39,8 +39,7 @@ jobs:
         # run: go build -v ./...
       # - name: Debug list files
         # run: ls -laR
-
-  create-release:
+	create-release:
     needs: build
     runs-on: ubuntu-latest
     permissions:
@@ -58,6 +57,25 @@ jobs:
             Release created automatically
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            #
+  # create-release:
+    # needs: build
+    # runs-on: ubuntu-latest
+    # permissions:
+      # contents: write
+    # steps:
+      # - name: Checkout repository
+        # uses: actions/checkout@v4
+      # - name: Create Release
+        # id: create_release
+        # uses: softprops/action-gh-release@v1
+        # with:
+          # files: ./golang_dummy
+          # token: ${{ secrets.GITHUB_TOKEN }}
+          # body: |
+            # Release created automatically
+        # env:
+          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
  			# - name: Upload assets
         # uses: actions/upload-release-asset@v1
