@@ -44,16 +44,18 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Create Release
-        id: create_release
-        uses: softprops/action-gh-release@v1
-        with:
-          files: ./golang_dummy
-          token: ${{ secrets.GITHUB_TOKEN }}
-          body: |
-            Release created automatically
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Debug list files
+        run: ls -laR
+      # - name: Create Release
+        # id: create_release
+        # uses: softprops/action-gh-release@v1
+        # with:
+          # files: ./golang_dummy
+          # token: ${{ secrets.GITHUB_TOKEN }}
+          # body: |
+            # Release created automatically
+        # env:
+          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # - name: Checkout repository
         # uses: actions/checkout@v2
 
