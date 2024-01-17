@@ -31,11 +31,14 @@ jobs:
       - name: Test
         run: go test -v ./...
 
-      - name: Build
-        run: go build -v ./...
+      - name: build package
+        run: ./scripts/build.sh
 
-      - name: List files
-        run: ls -la
+      # - name: Build
+        # run: go build -v ./...
+
+      # - name: List files
+        # run: ls -la
 
   # create-release:
     # needs: build
