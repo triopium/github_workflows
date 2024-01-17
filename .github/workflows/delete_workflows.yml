@@ -3,17 +3,41 @@ on:
   workflow_dispatch:
 
 jobs:
-  cleanup_workflows:
+  delete-workflow-runs:
     runs-on: ubuntu-latest
-    permissions:
-      actions: write
-      contents: read
+    name: delete workflow runs
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
       - name: Delete workflow runs
-        uses: MajorScruffy/delete-old-workflow-runs@v0.2.0
+        uses: ./ # Uses an action in the root directory
+        id: delete-old-workflow-runs
         with:
-          repository: triopium/github_workflows
-          older-than-seconds: 60
-          #remove all workflow older than seconds
+          repository: triopium/github_workflows 
+          workflow: ".github/workflows/golang_package_release.yml"
+          # older-than-seconds: 3600
+          # created-before: "2021-12-08T16:34:00Z"
+          # actor: test@test.com
+          # branch: main
+          # event: push
+          # event: completed
+          # what-if: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+# jobs:
+  # cleanup_workflows:
+    # runs-on: ubuntu-latest
+    # permissions:
+      # actions: write
+      # contents: read
+    # steps:
+      # - name: Delete workflow runs
+        # uses: MajorScruffy/delete-old-workflow-runs@v0.2.0
+        # with:
+          # repository: triopium/github_workflows
+          # older-than-seconds: 60
+          # remove all workflow older than seconds
+        # env:
+          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
