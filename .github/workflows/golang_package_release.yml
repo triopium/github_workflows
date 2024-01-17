@@ -46,15 +46,15 @@ jobs:
       contents: write
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Debug list files
         run: ls -laR
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
-          # files: ./golang_dummy
-          files: ./README.md
+          files: ./golang_dummy
+          # files: ./README.md
           token: ${{ secrets.GITHUB_TOKEN }}
           body: |
             Release created automatically
