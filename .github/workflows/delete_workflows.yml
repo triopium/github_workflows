@@ -1,0 +1,19 @@
+name: Clean up
+on:
+  workflow_dispatch:
+
+jobs:
+  cleanup_workflows:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      contents: read
+    steps:
+      - name: Delete workflow runs
+        uses: MajorScruffy/delete-old-workflow-runs@v0.2.0
+        with:
+          repository: triopium/github_workflows
+          older-than-seconds: 60
+          #remove all workflow older than seconds
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
