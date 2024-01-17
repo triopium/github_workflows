@@ -28,14 +28,14 @@ jobs:
       - name: Display Go version
         run: go version
 
-      - name: List files
-        run: ls -la
-
       - name: Test
         run: go test -v ./...
 
       - name: Build
         run: go build -v ./...
+
+      - name: List files
+        run: ls -la
 
   # create-release:
     # needs: build
