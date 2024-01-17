@@ -34,17 +34,26 @@ jobs:
       - name: build package with bash script
         run: ./scripts/build.sh
 
-      # - name: Build
+      # - name: build package with command
         # run: go build -v ./...
 
-      - name: List files
-        run: ls -laR
+      # - name: Debug list files
+        # run: ls -laR
 
-  # create-release:
-    # needs: build
-    # runs-on: ubuntu-latest
-
-    # steps:
+  create-release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create Release
+          id: create_release
+          uses: softprops/action-gh-release@v1
+          with:
+            files: ./golang_dummy
+            token: ${{ secrets.GITHUB_TOKEN }}
+            body: |
+              Release created automatically
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # - name: Checkout repository
         # uses: actions/checkout@v2
 
