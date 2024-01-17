@@ -48,15 +48,26 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      # - name: Debug list files
-        # run: ls -la
       - name: Create Release
         id: create_release
-        uses: softprops/action-gh-release@v1
-        with:
-          files: ./golang_dummy
-          token: ${{ secrets.GITHUB_TOKEN }}
-          body: |
-            Release created automatically
+        uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+
+      # - name: Debug list files
+        # run: ls -la
+      # - name: Create Release
+        # id: create_release
+        # uses: softprops/action-gh-release@v1
+        # with:
+          # files: ./golang_dummy
+          # token: ${{ secrets.GITHUB_TOKEN }}
+          # body: |
+            # Release created automatically
+        # env:
+          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
