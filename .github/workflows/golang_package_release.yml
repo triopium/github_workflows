@@ -1,10 +1,11 @@
-name: Release package
+name: Build and release package on tag push
 
 # Execute when tag pushed to repository
 on:
   push:
     tags:
       - 'golang*'
+
 jobs:
   build:
     runs-on: ubuntu-latest
