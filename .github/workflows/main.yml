@@ -4,7 +4,7 @@ name: Release package
 on:
   push:
     tags:
-      - 'v*'
+      - 'golang*'
 jobs:
   build:
     runs-on: ubuntu-latest
