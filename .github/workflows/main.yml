@@ -23,19 +23,19 @@ jobs:
         with:
           go-version: ${{ matrix.go-version }}
           # cache-dependency-path: go.sum
-          cach: false
+          cache: false
 
       - name: Display Go version
         run: go version
 
-      - name: Display Go version
+      - name: List files
         run: ls -la
 
-      # - name: Test
-        # run: go test -v ./...
+      - name: Test
+        run: go test -v ./...
 
-      # - name: Build
-        # run: go build -v ./...
+      - name: Build
+        run: go build -v ./...
 
   # create-release:
     # needs: build
