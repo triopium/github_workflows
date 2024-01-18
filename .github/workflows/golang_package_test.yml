@@ -43,8 +43,6 @@ jobs:
         with:
           files: |
             README.md
-            # golang_dummy.bin
-          # files: README.md
           token: ${{ secrets.GITHUB_TOKEN }}
           body: |
             Release created automatically
