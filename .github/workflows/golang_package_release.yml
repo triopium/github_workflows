@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: check variables
-        run: echo "${{github.repository}}"
+        run: echo "${{github.repository}}, ${{ github.workspace }}"
       # - uses: actions/checkout@v4
 
       # - name: Setup Go ${{ matrix.go-version }}
