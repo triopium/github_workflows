@@ -18,7 +18,8 @@ jobs:
     permissions:
       contents: write
     steps:
-      - run: echo ${github.repository}
+      - name: check variables
+        run: echo ${github.repository}
       # - uses: actions/checkout@v4
 
       # - name: Setup Go ${{ matrix.go-version }}
