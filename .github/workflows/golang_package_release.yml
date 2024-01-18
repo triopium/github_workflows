@@ -3,7 +3,7 @@ name: Release Workflow
 on:
   push:
     tags:
-      - 'gotest*' # Trigger only on tags that start with 'v'
+      - 'gorelease*' # Trigger only on tags that start with 'v'
 
 jobs:
   build:
@@ -19,7 +19,7 @@ jobs:
       contents: write
     steps:
       - name: check variables
-        run: echo ${github.repository}
+        run: echo "${github.repository}"
       # - uses: actions/checkout@v4
 
       # - name: Setup Go ${{ matrix.go-version }}

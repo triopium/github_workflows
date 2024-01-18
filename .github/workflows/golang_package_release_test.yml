@@ -4,7 +4,7 @@ name: Build and release package on tag push
 on:
   push:
     tags:
-      - 'golang*'
+      - 'release_test*'
 
 jobs:
   build:
