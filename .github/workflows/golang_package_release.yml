@@ -1,10 +1,9 @@
-name: Build and release package on tag push
+name: Release Workflow
 
-# Execute when tag pushed to repository
 on:
   push:
     tags:
-      - 'golang*'
+      - 'gotest*' # Trigger only on tags that start with 'v'
 
 jobs:
   build:
@@ -16,69 +15,38 @@ jobs:
       matrix:
         go-version: ['1.21']
         # go-version: ['1.21', '1.21.x' ]
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup Go ${{ matrix.go-version }}
-        uses: actions/setup-go@v4
-        with:
-          go-version: ${{ matrix.go-version }}
-          # cache-dependency-path: go.sum
-          cache: false
-
-      - name: Display Go version
-        run: go version
-
-      - name: Test
-        run: go test -v ./...
-
-      - name: build package with bash script
-        run: ./scripts/build.sh
-
-      # - name: build package with command
-        # run: go build -v ./...
-      # - name: Debug list files
-        # run: ls -laR
-
-  create-release:
-    needs: build
-    runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Create Release
-        id: create_release
-        uses: softprops/action-gh-release@v1
-        with:
-          files: golang_dummy
-          token: ${{ secrets.GITHUB_TOKEN }}
-          body: |
-            Release created automatically
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: echo ${github.repository}
+      # - uses: actions/checkout@v4
 
-      # - name: Upload assets
-        # uses: actions/upload-release-asset@v1
-        # env:
-          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        # with:
-          # upload_url: ${{ steps.create_release.outputs.upload_url }}
-          # asset_path: ./
-          # asset_name: golang_dummy
-          # asset_content_type: application/octet-stream
-            #
-      # - name: Create Release
-        # id: create_release
-        # uses: actions/create-release@v1
-        # with:
-          # tag_name: ${{ github.ref }}
-          # release_name: Release ${{ github.ref }}
-          # draft: false
-          # prerelease: false
-        # env:
-          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+      # - name: Setup Go ${{ matrix.go-version }}
+      #   uses: actions/setup-go@v4
+      #   with:
+      #     go-version: ${{ matrix.go-version }}
+      #     # cache-dependency-path: go.sum
+      #     cache: false
+      # - name: Display Go version
+      #   run: go version
+      # - name: Test
+      #   run: go test -v ./...
+      # - name: build package with bash script
+      #   run: ./scripts/build.sh
+      # - name: Debug pwd
+      #   run: pwd
       # - name: Debug list files
-        # run: ls -la
+      #   run: ls -laR
+
+      # - name: Create Release
+      #   id: create_release
+      #   uses: softprops/action-gh-release@v1
+      #   with:
+      #     files: |
+      #       README.md
+      #       ./golang_dummy/golang_dummy.bin
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     body: |
+      #       Release created automatically
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
