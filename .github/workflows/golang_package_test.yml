@@ -43,6 +43,7 @@ jobs:
         with:
           files: |
             README.md
+            .gitignore
           token: ${{ secrets.GITHUB_TOKEN }}
           body: |
             Release created automatically
