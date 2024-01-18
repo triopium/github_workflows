@@ -18,6 +18,7 @@ jobs:
     permissions:
       contents: write
     steps:
+      - uses: actions/checkout@v4
       - name: check variables
         run: echo "${{github.repository}}"
       # - uses: actions/checkout@v4
