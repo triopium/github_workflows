@@ -55,7 +55,7 @@ jobs:
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
-          files: ./golang_dummy/golang_dummy
+          files: ./golang_dummy/golang_dummy.bin
           # files: README.md
           token: ${{ secrets.GITHUB_TOKEN }}
           body: |

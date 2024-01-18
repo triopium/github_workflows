@@ -5,4 +5,4 @@ BuildTime="$(date +%FT%T)"
 GitCommit="$(git rev-parse HEAD)"
 GitTag="$(git describe --tags --abbrev=0)"
 path="github/triopium/github_workflows/golang_dummy/cmd"
-go build -ldflags "-X $path.BuildGitTag=$GitTag -X $path.BuildGitCommit=$GitCommit -X $path.BuildBuildTime=$BuildTime"
+go build -ldflags "-X $path.BuildGitTag=$GitTag -X $path.BuildGitCommit=$GitCommit -X $path.BuildBuildTime=$BuildTime" -o golang_dummy.bin
