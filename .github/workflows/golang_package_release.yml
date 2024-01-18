@@ -65,8 +65,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./golang_dummy
-          asset_name: ./golang_dummy
+          asset_path: golang_dummy
+          asset_name: golang_dummy
           asset_content_type: application/octet-stream
             #
       # - name: Create Release
