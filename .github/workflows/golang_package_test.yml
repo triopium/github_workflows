@@ -41,14 +41,14 @@ jobs:
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
-          files: |
-            README.md
-            .gitignore
+          files: README.md
           token: ${{ secrets.GITHUB_TOKEN }}
           body: |
             Release created automatically
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        permissions:
+          contents: write
 
   # create-release:
     # needs: build
