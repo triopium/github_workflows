@@ -61,5 +61,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Print Release URL
-        run: echo "Release URL: ${{ steps.create_release.outputs.upload_url }}"
+      # - name: Print Release URL
+        # run: echo "Release URL: ${{ steps.create_release.outputs.upload_url }}"
