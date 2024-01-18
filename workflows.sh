@@ -1,6 +1,7 @@
 #!/bin/bash
 #
 # github-cli
+#
 OWNER=triopium
 REPO="github_workflows"
 WORKFLOW_NAME="delete_workflows"
