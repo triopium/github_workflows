@@ -18,9 +18,9 @@ jobs:
     permissions:
       contents: write
     steps:
-      # - name: Set env
-        # run: echo "PACKAGE_NAME=${PWD##*/}" >> "$GITHUB_ENV"
       - uses: actions/checkout@v4
+      - name: Set env
+        run: echo "PACKAGE_NAME=${PWD##*/}" >> "$GITHUB_ENV"
       # - name: Name of resulting binary named from working directoory
         # run: echo "${PWD##*/}.bin" # last part of path
         # run: echo "${{github.repository}}, ${{ github.workspace }}"
