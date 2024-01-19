@@ -3,7 +3,7 @@ name: Release Workflow
 on:
   push:
     tags:
-      - 'gorelease*' # trigger on push tags matching regex
+      - 'gorelease_main' # trigger on push tags matching regex
 
 jobs:
   build:
@@ -38,7 +38,6 @@ jobs:
         run: pwd
       - name: Debug list files
         run: ls -laR
-
       - name: Create Release and include binary file
         id: create_release
         uses: softprops/action-gh-release@v1
