@@ -21,7 +21,7 @@ jobs:
       PACKAGE_NAME: "${PWD##*/}"
     steps:
       - uses: actions/checkout@v4
-      - name: Name of resulting binary named from working directoory
+      # - name: Name of resulting binary named from working directoory
         # run: echo "${PWD##*/}.bin" # last part of path
         # run: echo "${{github.repository}}, ${{ github.workspace }}"
       - uses: actions/checkout@v4
