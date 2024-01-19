@@ -18,13 +18,13 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Set env
-        run: echo "PACKAGE_NAME=${PWD##*/}" >> "$GITHUB_ENV"
+      # - name: Set env
+        # run: echo "PACKAGE_NAME=${PWD##*/}" >> "$GITHUB_ENV"
       - uses: actions/checkout@v4
       # - name: Name of resulting binary named from working directoory
         # run: echo "${PWD##*/}.bin" # last part of path
         # run: echo "${{github.repository}}, ${{ github.workspace }}"
-      - run: echo "${{env.PACKAGE_NAME}}"
+      # - run: echo "${{env.PACKAGE_NAME}}"
 
       # - name: Setup Go ${{ matrix.go-version }}
         # uses: actions/setup-go@v4
