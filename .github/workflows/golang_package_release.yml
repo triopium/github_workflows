@@ -3,14 +3,14 @@ name: Release Workflow
 on:
   push:
     tags:
-      - 'gorelease*' # Trigger only on tags that start with 'v'
+      - 'gorelease*' # trigger on push tags matching regex
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    # defaults:
-      # run:
-        # working-directory: ./golang_dummy/
+    defaults:
+      run:
+        working-directory: ./golang_dummy/
     strategy:
       matrix:
         go-version: ['1.21']
@@ -19,19 +19,19 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      - name: check variables
-        run: echo "${PWD##*/}"
+      - name: Name of resulting binary named from working directoory
+        run: echo "${PWD##*/}.bin" # last part of path
         # run: echo "${{github.repository}}, ${{ github.workspace }}"
-      # - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      # - name: Setup Go ${{ matrix.go-version }}
-      #   uses: actions/setup-go@v4
-      #   with:
-      #     go-version: ${{ matrix.go-version }}
-      #     # cache-dependency-path: go.sum
-      #     cache: false
-      # - name: Display Go version
-      #   run: go version
+      - name: Setup Go ${{ matrix.go-version }}
+        uses: actions/setup-go@v4
+        with:
+          go-version: ${{ matrix.go-version }}
+          # cache-dependency-path: go.sum
+          cache: false
+      - name: Display Go version
+        run: go version
       # - name: Test
       #   run: go test -v ./...
       # - name: build package with bash script
