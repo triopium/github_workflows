@@ -34,18 +34,18 @@ jobs:
         run: go test -v ./...
       - name: build package with bash script
         run: ./scripts/build.sh
-      # - name: Debug pwd
-      #   run: pwd
-      # - name: Debug list files
-        # run: ls -laR
+      - name: Debug pwd
+        run: pwd
+      - name: Debug list files
+        run: ls -laR
 
       - name: Create Release and include binary file
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            README.md
-            ./golang_dummy/{{ env.PACKAGE_NAME }}.bin
+            "README.md"
+            "./golang_dummy/{{ env.PACKAGE_NAME }}.bin"
           token: ${{ secrets.GITHUB_TOKEN }}
           body: |
             Release created automatically
