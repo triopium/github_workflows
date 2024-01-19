@@ -17,29 +17,32 @@ jobs:
         # go-version: ['1.21', '1.21.x' ]
     permissions:
       contents: write
+    env:
+      PACKAGE_NAME: "${PWD##*/}"
     steps:
       - uses: actions/checkout@v4
       - name: Name of resulting binary named from working directoory
-        run: echo "${PWD##*/}.bin" # last part of path
+        # run: echo "${PWD##*/}.bin" # last part of path
         # run: echo "${{github.repository}}, ${{ github.workspace }}"
       - uses: actions/checkout@v4
+      - run: echo "${PACKAGE_NAME}"
 
-      - name: Setup Go ${{ matrix.go-version }}
-        uses: actions/setup-go@v4
-        with:
-          go-version: ${{ matrix.go-version }}
+      # - name: Setup Go ${{ matrix.go-version }}
+        # uses: actions/setup-go@v4
+        # with:
+          # go-version: ${{ matrix.go-version }}
           # cache-dependency-path: go.sum
-          cache: false
-      - name: Display Go version
-        run: go version
+          # cache: false
+      # - name: Display Go version
+        # run: go version
       # - name: Test
       #   run: go test -v ./...
       # - name: build package with bash script
       #   run: ./scripts/build.sh
       # - name: Debug pwd
       #   run: pwd
-      - name: Debug list files
-        run: ls -laR
+      # - name: Debug list files
+        # run: ls -laR
 
       # - name: Create Release
       #   id: create_release
