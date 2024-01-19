@@ -44,8 +44,8 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            "README.md"
-            "./golang_dummy/{{ env.PACKAGE_NAME }}.bin"
+            README.md
+            ./golang_dummy/${{ env.PACKAGE_NAME }}.bin
           token: ${{ secrets.GITHUB_TOKEN }}
           body: |
             Release created automatically
