@@ -17,15 +17,17 @@ jobs:
         # go-version: ['1.21', '1.21.x' ]
     permissions:
       contents: write
-    env:
-      PACKAGE_NAME: "${PWD##*/}"
+    # env:
+      # PACKAGE_NAME: "${PWD##*/}"
     steps:
+      - name: Set env
+        run: echo "PACKAGE_NAME=${PWD##*/}" >> "$GITHUB_ENV"
       - uses: actions/checkout@v4
       # - name: Name of resulting binary named from working directoory
         # run: echo "${PWD##*/}.bin" # last part of path
         # run: echo "${{github.repository}}, ${{ github.workspace }}"
       - uses: actions/checkout@v4
-      - run: echo "${PACKAGE_NAME}"
+      - run: echo "${{env.PACKAGE_NAME}}"
 
       # - name: Setup Go ${{ matrix.go-version }}
         # uses: actions/setup-go@v4
